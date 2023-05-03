@@ -1,0 +1,41 @@
+{%extends "base.html"%} {%block content%}
+
+<section class="text-gray-600 body-font overflow-hidden">
+  <a href="{%url 'leads:leadList' %}">Go back to lead list</a>
+  <div class="container w-[100%] px-5 py-24 flex justify-center items-center">
+    <div class="lg:w-[4/5] mx-auto flex flex-wrap">
+      <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">Lead</h2>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">
+          {{lead.first_name}} {{lead.last_name}}
+        </h1>
+        <div class="flex mb-4">
+          <a
+            href="{%url 'leads:leadDetail' lead.id%}"
+            class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1"
+            >Overview</a
+          >
+          <a
+            href="{%url 'leads:leadUpdate' lead.id %}"
+            class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1"
+            >Update Details</a
+          >
+        </div>
+        <form class="flex flex-col space-y-4" method="POST" action=".">
+          {%csrf_token%} {{form.as_p}}
+          <button type="submit">update</button>
+        </form>
+        <button class="w-full text-center py-3" type="submit">
+          <a href="{%url 'leads:leadDelete' lead.id%}">delete</a>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <a href="{%url 'leads:leadList' %}">Go back to lead list</a>
+<h1>Update a lead: {{lead.first_name}} {{lead.last_name}}</h1>
+<form method="POST" action=".">
+  {%csrf_token%} {{form.as_p}}
+  <button type="submit">submit</button>
+</form> -->
+{% endblock content%}
