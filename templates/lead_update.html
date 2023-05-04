@@ -21,7 +21,7 @@
             >Update Details</a
           >
         </div>
-        <form class="flex flex-col space-y-4" method="POST" action=".">
+        <form class="flex flex-col space-y-4" method="POST" action="">
           {%csrf_token%} {{form.as_p}}
           <button type="submit">update</button>
         </form>
